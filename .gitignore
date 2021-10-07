@@ -1,0 +1,11 @@
+.DS_Store
+
+# IntelliJ
+.idea/
+*.iml
+
+# Maven files
+target/
+
+# Package Files #
+*.jar
