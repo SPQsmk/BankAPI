@@ -7,10 +7,7 @@ CREATE TABLE IF NOT EXISTS account(
     id IDENTITY PRIMARY KEY,
     client_id BIGINT NOT NULL,
     number VARCHAR(20) NOT NULL UNIQUE,
-    balance DECIMAL,
     FOREIGN KEY (client_id) REFERENCES client (id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS card(
@@ -19,6 +16,4 @@ CREATE TABLE IF NOT EXISTS card(
     number VARCHAR(20) NOT NULL UNIQUE,
     balance DECIMAL,
     FOREIGN KEY (account_id) REFERENCES account (id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
 );

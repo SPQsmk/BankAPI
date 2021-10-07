@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -25,5 +27,7 @@ public class Card {
     @Column(name = "balance")
     private BigDecimal balance;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
     private Account account;
 }
