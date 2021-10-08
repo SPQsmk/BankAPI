@@ -1,33 +1,31 @@
 package com.bootcamp.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
-@Data
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "card")
+@Table(name = "CARD")
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "number")
+    @Column(name = "NUMBER")
     private String number;
 
-    @Column(name = "balance")
+    @Column(name = "BALANCE")
     private BigDecimal balance;
-
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
 }

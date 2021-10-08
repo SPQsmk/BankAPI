@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class CardDAOImpl implements CardDAO{
-    private SessionFactory factory;
+    private final SessionFactory factory;
 
     public CardDAOImpl(SessionFactory factory) {
         this.factory = factory;

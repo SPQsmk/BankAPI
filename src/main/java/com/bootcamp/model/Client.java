@@ -1,26 +1,35 @@
 package com.bootcamp.model;
 
-import lombok.Data;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Data
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "client")
+@Table(name = "CLIENT")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "client")
-    @Cascade(CascadeType.ALL)
-    private Set<Account> accounts = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="CLIENT_ID")
+    List<Account> accountList;
 }
