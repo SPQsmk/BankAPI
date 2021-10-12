@@ -1,9 +1,8 @@
-package com.bootcamp.model;
+package com.bootcamp.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,12 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 
 @Getter
 @Setter
 @Entity
-@ToString
 @EqualsAndHashCode
 @Table(name = "CARD")
 public class Card {
@@ -27,13 +24,10 @@ public class Card {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NUMBER")
+    @Column(name = "NUMBER", nullable = false)
     private String number;
 
-    @Column(name = "BALANCE")
-    private BigDecimal balance;
-
     @ManyToOne
-    @JoinColumn(name = "ACCOUNT_ID")
+    @JoinColumn(name = "ACCOUNT_ID", nullable = false)
     private Account account;
 }

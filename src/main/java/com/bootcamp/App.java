@@ -1,9 +1,11 @@
 package com.bootcamp;
 
-import com.bootcamp.service.CardServiceImpl;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        CardServiceImpl service = new CardServiceImpl();
+        SpringApplication.run(App.class, args);
     }
 }
