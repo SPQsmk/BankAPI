@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -34,6 +35,10 @@ public class Account {
 
     @Column(name = "BALANCE", nullable = false)
     private BigDecimal balance;
+
+    @Version
+    @Column(name = "VERSION")
+    private Long version;
 
     @ManyToOne
     @JoinColumn(name = "CLIENT_ID", nullable = false)

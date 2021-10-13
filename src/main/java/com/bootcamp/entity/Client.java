@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import java.util.Set;
 
@@ -28,6 +29,10 @@ public class Client {
 
     @Column(name = "NAME", nullable = false)
     private String name;
+
+    @Version
+    @Column(name = "VERSION")
+    private Long version;
 
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
