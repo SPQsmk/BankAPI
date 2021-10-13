@@ -5,16 +5,20 @@ import com.bootcamp.entity.Account;
 import com.bootcamp.entity.Card;
 import com.bootcamp.exception.AccountNotFoundException;
 import com.bootcamp.exception.NonUniqueCardException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
 
 @Repository
 public class CardDAOImpl implements CardDAO{
-    @PersistenceContext
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
+
+    @Autowired
+    public CardDAOImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     private boolean isCardExists(String cardNumber) {
         try {

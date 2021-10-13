@@ -3,16 +3,20 @@ package com.bootcamp.dao;
 import com.bootcamp.entity.Card;
 import com.bootcamp.entity.Client;
 import com.bootcamp.exception.ClientNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
 public class ClientDAOImpl implements ClientDAO {
-    @PersistenceContext
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
+
+    @Autowired
+    public ClientDAOImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public List<Card> getCards(Long clientId) {

@@ -2,16 +2,20 @@ package com.bootcamp.dao;
 
 import com.bootcamp.entity.Account;
 import com.bootcamp.exception.AccountNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.math.BigDecimal;
 
 @Repository
 public class AccountDAOImpl implements AccountDAO {
-    @PersistenceContext
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
+
+    @Autowired
+    public AccountDAOImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     private Account getAccount(Long accountId){
         Account account = entityManager.find(Account.class, accountId);
