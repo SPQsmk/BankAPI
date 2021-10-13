@@ -2,6 +2,7 @@ package com.bootcamp.exceptionhandler;
 
 import com.bootcamp.exception.AccountNotFoundException;
 import com.bootcamp.exception.ClientNotFoundException;
+import com.bootcamp.exception.NegativeDepositException;
 import com.bootcamp.exception.NonUniqueCardException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,5 +27,10 @@ public class BankExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NonUniqueCardException.class)
     protected ResponseEntity<Object> handleNonUniqueCardException(RuntimeException ex, WebRequest request) {
         return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.CONFLICT, request);
+    }
+
+    @ExceptionHandler(NegativeDepositException.class)
+    protected ResponseEntity<Object> handleNegativeDepositException(RuntimeException ex, WebRequest request) {
+        return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 }

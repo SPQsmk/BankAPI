@@ -2,6 +2,7 @@ package com.bootcamp.dao;
 
 import com.bootcamp.entity.Account;
 import com.bootcamp.exception.AccountNotFoundException;
+import com.bootcamp.exception.NegativeDepositException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -34,6 +35,9 @@ public class AccountDAOImpl implements AccountDAO {
 
     @Override
     public void depositMoney(Long accountId, BigDecimal money) {
+        if (money.compareTo(BigDecimal.ZERO) <= 0)
+            throw new NegativeDepositException("Negative deposit: " + money);
+
         Account account = getAccount(accountId);
         account.setBalance(account.getBalance().add(money));
     }

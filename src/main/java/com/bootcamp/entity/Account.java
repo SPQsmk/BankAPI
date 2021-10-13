@@ -29,7 +29,7 @@ public class Account {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NUMBER", nullable = false, unique = true)
+    @Column(name = "NUMBER", nullable = false, unique = true, length = 20)
     private String number;
 
     @Column(name = "BALANCE", nullable = false)

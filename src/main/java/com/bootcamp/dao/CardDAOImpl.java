@@ -22,7 +22,7 @@ public class CardDAOImpl implements CardDAO{
 
     private boolean isCardExists(String cardNumber) {
         try {
-            Card card = entityManager.createQuery("from Card where number=:number", Card.class)
+            entityManager.createQuery("from Card where number=:number", Card.class)
                     .setParameter("number", cardNumber)
                     .getSingleResult();
         } catch (NoResultException e) {

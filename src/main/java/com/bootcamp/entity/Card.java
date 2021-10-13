@@ -24,7 +24,7 @@ public class Card {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NUMBER", nullable = false, unique = true)
+    @Column(name = "NUMBER", nullable = false, unique = true, length = 20)
     private String number;
 
     @ManyToOne
