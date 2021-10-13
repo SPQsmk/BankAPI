@@ -2,7 +2,7 @@ package com.bootcamp.dao;
 
 import com.bootcamp.entity.Card;
 import com.bootcamp.entity.Client;
-import com.bootcamp.exception.NoSuchClientException;
+import com.bootcamp.exception.ClientNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -19,7 +19,7 @@ public class ClientDAOImpl implements ClientDAO {
         Client client = entityManager.find(Client.class, clientId);
 
         if (client == null) {
-            throw new NoSuchClientException("Client not found");
+            throw new ClientNotFoundException("Client with id: " + clientId + " not found");
         }
 
         return entityManager

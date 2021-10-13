@@ -41,6 +41,6 @@ public class Account {
     private Client client;
 
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Card> cardList;
 }

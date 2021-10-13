@@ -1,7 +1,7 @@
 package com.bootcamp.dao;
 
 import com.bootcamp.entity.Account;
-import com.bootcamp.exception.NoSuchAccountException;
+import com.bootcamp.exception.AccountNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,12 +13,11 @@ public class AccountDAOImpl implements AccountDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Override
-    public Account getAccount(Long accountId){
+    private Account getAccount(Long accountId){
         Account account = entityManager.find(Account.class, accountId);
 
         if (account == null) {
-            throw new NoSuchAccountException("Account not found");
+            throw new AccountNotFoundException("Account with id: " + accountId + " not found");
         }
 
         return account;

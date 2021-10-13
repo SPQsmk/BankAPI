@@ -1,19 +1,27 @@
 package com.bootcamp.controller;
 
-import com.bootcamp.entity.Card;
+import com.bootcamp.dto.DepositDTO;
+import com.bootcamp.dto.GetBalanceDTO;
+import com.bootcamp.service.AccountService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/accounts/")
 public class AccountController {
-    @GetMapping
-    public ResponseEntity<Card> getTodoList() {
-        Card c = new Card();
-        c.setId(1L);
-        c.setNumber("12344321123443211234");
-        return ResponseEntity.ok(c);
+    private final AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    @GetMapping("/{accountId}/balance")
+    public ResponseEntity<GetBalanceDTO> getBalance(@PathVariable Long accountId) {
+        return ResponseEntity.ok(accountService.getBalance(accountId));
+    }
+
+    @PutMapping("/update-balance")
+    public void depositMoney(@RequestBody DepositDTO depositDTO) {
+        accountService.depositMoney(depositDTO);
     }
 }

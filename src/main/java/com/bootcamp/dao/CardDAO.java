@@ -1,7 +1,7 @@
 package com.bootcamp.dao;
 
-import com.bootcamp.entity.Card;
+import com.bootcamp.dto.CreateCardDTO;
 
 public interface CardDAO {
-    void addCard(Card card);
+    void createCard(CreateCardDTO createCardDTO);
 }

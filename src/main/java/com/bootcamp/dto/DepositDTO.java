@@ -12,6 +12,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepositDTO {
-    private Long accountId;
+    private Long id;
     private BigDecimal deposit;
 }
