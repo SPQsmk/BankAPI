@@ -16,7 +16,7 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public void createCard(@RequestBody CreateCardDTO createCardDTO) {
         cardService.createCard(createCardDTO);
     }

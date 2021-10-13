@@ -1,6 +1,5 @@
 package com.bootcamp.dao;
 
-import com.bootcamp.dto.CardDTO;
 import com.bootcamp.dto.CreateCardDTO;
 import com.bootcamp.entity.Account;
 import com.bootcamp.entity.Card;
