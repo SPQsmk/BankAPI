@@ -25,5 +25,5 @@
             json: 
                 {
                     "accountId": LONG_VALUE, // id счета
-                    "тгьиук": STRING // номер карты
+                    "number": STRING // номер карты
                 }
